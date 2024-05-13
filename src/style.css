@@ -119,9 +119,13 @@ body {
                 overflow-y: hidden;
                 list-style: none;
                 padding-left: 0px;
-                margin-left: 50px;
+
+                li:first-child {
+                    margin-top: 15px;
+                }
 
                 li {
+                    margin-left: 50px;
                     margin-bottom: 15px;
 
                     /* .task label {
