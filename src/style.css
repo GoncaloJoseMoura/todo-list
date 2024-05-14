@@ -11,10 +11,6 @@
     --font-family-regular: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", Helvetica, Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-:root::-webkit-scrollbar{
-    display: none;
-  }
-
 * {
     font-family: var(--font-family-regular);  
     margin: 0px;
@@ -23,15 +19,44 @@
     font-size: 14px;
 }
 
+
 body {
+    background-image: radial-gradient(grey 4%, transparent 4%);
+    background-position: 0 0;
+    background-color: var(--c_background);
+    background-size:  5.3vh 5.3vh;
+    /* background-image: radial-gradient(grey 4%, transparent 4%),
+    radial-gradient(grey 3.4%, transparent 3.4%);
+    background-color: var(--c_background);
+    background-position: 0 0, 30px 30px;
+    background-size: 60px 60px; */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     width: 100vw;
     color: #dc4b3f;
-    background: linear-gradient(to right, #fafcfe 0%, #FFFFFF 50%, #fafcfe 100%);
 
+    > h1 {
+        margin: 5vh;
+        font-weight: 200;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 2.9rem;
+        color: #000;
+        padding: 0;
+        line-height: 3.5rem !important;
+        text-transform: none;
+        font-weight: 600;
+
+        span {
+            font-size: 2.5rem;
+            color: red;
+            animation-delay: 2s;
+            font-weight: 600;
+            }
+    }
+    
     .main-content {
         width: 75vw;
         height: 75vh;
@@ -43,6 +68,7 @@ body {
         grid-template-columns: var(--dashboard_width) auto;
 
         .dashboard {
+            height: 75vh;
             border-radius: 15px;
             background-color: var(--c_dashboard);
 
@@ -99,6 +125,7 @@ body {
         }
 
         .content {
+            height: 75vh;
             border-radius: 15px;
             background-color: var(--c_background);
 
@@ -115,7 +142,7 @@ body {
             }
 
             ul {
-                height: 500px;
+                height: 53vh;
                 overflow-y: hidden;
                 list-style: none;
                 padding-left: 0px;
@@ -164,6 +191,7 @@ body {
     p {
       margin: 0px;
       font-size: 1.2rem;
+      transition: color 500ms ease-out;
     }
 
     p.hidden {
@@ -245,6 +273,14 @@ animation: splash-12 0.6s ease forwards;
 .checkbox-wrapper-12 .cbx input:checked + label + svg path {
 stroke-dashoffset: 0;
 }
+.checkbox-wrapper-12 .cbx input:hover + label + svg path {
+stroke-dashoffset: 0;
+stroke: #bfbfc0;
+}
+.checkbox-wrapper-12 .cbx input:hover:checked + label + svg path {
+stroke: #fff;
+}
+
 @-moz-keyframes splash-12 {
 40% {
     background: #dc4b3f;
