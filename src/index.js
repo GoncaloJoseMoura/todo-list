@@ -1,5 +1,6 @@
 import './style.css'
 import Profile from './assets/profile.jpg'
+import Typed from 'typed.js';
 
 document.querySelector('img').src = Profile
 
@@ -58,15 +59,12 @@ addTask(new Task('What have i done today', 'Out 8 2021'))
 addTask(new Task('What have i done today', 'Out 8 2021'))
 addTask(new Task('What have i done today', 'Out 8 2021'))
 
-// inputs.forEach(value => {
-//     value.addEventListener('click', (event) => {
-//         console.log(event.target)
-//         if (event.target.checked) {
-//             event.target.closest('.checkbox-wrapper-12').querySelector('p').classList.add('hidden')
-//         } else {
-//             event.target.closest('.checkbox-wrapper-12').querySelector('p').classList.remove('hidden')
-//         }
 
-//     })
-// })
 
+const typed = new Typed('.txt-rotate', {
+  strings: [ "Master your day.", "Crush your to-do list.", "Stay productive!"],
+  typeSpeed: 100,
+  backSpeed: 100,
+  backDelay: 1000,
+  loop: true,
+});
