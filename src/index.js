@@ -1,65 +1,22 @@
 import './style.css'
 import Profile from './assets/profile.jpg'
 import Typed from 'typed.js';
+import { NotesStorage } from './pages/notes.js';
+
+import Task from './modules/dom.js'
+import Todo from './pages/entries.js';
+import Storage from './modules/data.js'
+
+// completed
+// add projects to form when creating a new one 
+// when delete project i get an error
+// when submiting new project run that project which run the dialog project selection again
+// checking for duplicated tasks
+// when deleting a task, delete it in the task_storage
+// creating a project when in projects trows a bug
+
 
 document.querySelector('img').src = Profile
-
-// const inputs = document.querySelectorAll('input')
-const ul = document.querySelector('.content ul')
-
-function addTask(element) {
-    const li = document.createElement('li')
-    li.innerHTML = `
-    <div class="checkbox-wrapper-12">
-        <div class="cbx">
-          <input id="cbx-12" type="checkbox"/>
-          <label for="cbx-12"></label>
-          <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
-            <path d="M2 8.36364L6.23077 12L13 2"></path>
-          </svg>
-        </div>
-        <p class="task1">${element.text}</p>
-    </div>
-    <div class="date">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12" class="calendar_icon"><path fill="currentColor" fill-rule="evenodd" d="M9.5 1h-7A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5v-7A1.5 1.5 0 0 0 9.5 1ZM2 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7ZM8.75 8a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM3.5 4a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5Z" clip-rule="evenodd"></path></svg>
-        <p>${element.date}</p>
-    </div>
-    `
-
-    li.querySelector('input').addEventListener('click', (event) => {
-        if (event.target.checked) {
-            event.target.closest('.checkbox-wrapper-12').querySelector('p').classList.add('hidden')
-        } else {
-            event.target.closest('.checkbox-wrapper-12').querySelector('p').classList.remove('hidden')
-        }
-
-    })
-
-    ul.appendChild(li)
-}
-
-function Task(text, date) {
-    this.text = text
-    this.date = date
-}
-
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done Tomorrow', 'Out 9 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-addTask(new Task('What have i done today', 'Out 8 2021'))
-
-
 
 const typed = new Typed('.txt-rotate', {
   strings: [ "Master your day.", "Crush your to-do list.", "Stay productive!"],
@@ -68,3 +25,61 @@ const typed = new Typed('.txt-rotate', {
   backDelay: 1000,
   loop: true,
 });
+
+
+Storage.createProject('Default')
+Storage.createProject('Daily Routine')
+Storage.createProject('Errands')
+
+Task.listProjects()
+
+Storage.addTask(new Task.createTask('Track income and expenses', '1111-01-01', 'Low'), 'Default')
+Storage.addTask(new Task.createTask('Review budget categories and adjust if needed ', '1111-01-01', 'High'), 'Default')
+Storage.addTask(new Task.createTask("Buy groceries", '1111-01-01', "Medium"), 'Errands')
+Storage.addTask(new Task.createTask("Finish report", '1111-01-01', "High"), 'Daily Routine')
+Storage.addTask(new Task.createTask("Go for a run", '1111-01-01', "Low"), 'Daily Routine')
+Storage.addTask(new Task.createTask("Call mom", '1111-01-01', "Medium"), 'Daily Routine')
+Storage.addTask(new Task.createTask("Clean apartment", '1111-01-01', "Low"), 'Errands')
+
+NotesStorage.addNote("Shopping List", "Milk, Bread, Eggs, Bananas")
+NotesStorage.addNote("Meeting Agenda","Discuss project timeline - Brainstorm marketing ideas - Assign tasks")
+NotesStorage.addNote( "Call Mom", "Remind her about birthday dinner reservation")
+NotesStorage.addNote("Interesting article", "https://www.example.com/science/new_discovery https://www.sciencenews.org/ https://www.example.com/science/new_discovery https://www.sciencenews.org/ https://www.example.com/science/new_discovery https://www.sciencenews.org/ https://www.example.com/science/new_discovery https://www.sciencenews.org/")
+NotesStorage.addNote("Movie idea", "Write a script about a time-traveling librarian")
+NotesStorage.addNote("Tomorrow's tasks", "- Finish project report - Go to the gym - Pick up dry cleaning")
+
+Todo('Entries')
+
+document.querySelector('.entries').addEventListener('click', (event) => {
+
+    document.querySelector('.active').classList.remove('active')
+    Todo('Entries')
+    document.querySelector('.entries').classList.add('active')
+})
+
+document.querySelector('.notes').addEventListener('click', (event) => {
+
+  document.querySelector('.active').classList.remove('active')
+  NotesStorage.renderNotes()
+  document.querySelector('.notes').classList.add('active')
+})
+
+const form = document.querySelector('#project-modal form')
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const formData = new FormData(form)
+
+    if (!(formData.get('name') in Storage.task_storage)) {
+  
+      Storage.createProject(formData.get('name'))
+      Task.listProjects()
+    } else {
+      alert(formData.get('name') + ' is already a Project')
+    }
+
+    document.querySelector('#project-modal').close()
+    form.reset()
+    document.querySelector('ul.projects-list').lastChild.click()
+    }
+)
