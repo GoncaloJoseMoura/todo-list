@@ -14,6 +14,14 @@ import Storage from './modules/data.js'
 // checking for duplicated tasks
 // when deleting a task, delete it in the task_storage
 // creating a project when in projects trows a bug
+// make it so the task have a grid layout where | | | is always the same distance between rows
+// when in a project tab hide the projects from the tasks
+// if i clear or delete a task and add a new one it will mark it as checked
+// when i add a task in a project it will check another task
+
+// to do
+
+
 
 
 document.querySelector('img').src = Profile
@@ -34,7 +42,7 @@ Storage.createProject('Errands')
 Task.listProjects()
 
 Storage.addTask(new Task.createTask('Track income and expenses', '1111-01-01', 'Low'), 'Default')
-Storage.addTask(new Task.createTask('Review budget categories and adjust if needed ', '1111-01-01', 'High'), 'Default')
+Storage.addTask(new Task.createTask('Review budget categories and adjust if...', '1111-01-01', 'High'), 'Default')
 Storage.addTask(new Task.createTask("Buy groceries", '1111-01-01', "Medium"), 'Errands')
 Storage.addTask(new Task.createTask("Finish report", '1111-01-01', "High"), 'Daily Routine')
 Storage.addTask(new Task.createTask("Go for a run", '1111-01-01', "Low"), 'Daily Routine')
