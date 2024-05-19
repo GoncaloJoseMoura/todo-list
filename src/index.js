@@ -20,8 +20,7 @@ import Storage from './modules/data.js'
 // when i add a task in a project it will check another task
 
 // to do
-
-
+// add text that says you have completed all your tasks with a robo image
 
 
 document.querySelector('img').src = Profile
