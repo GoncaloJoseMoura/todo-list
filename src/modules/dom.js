@@ -1,11 +1,13 @@
 
 import Storage from "./data"
 import Todo from "../pages/entries"
+import {format} from "date-fns";
 
 const Task = (() => {
 
     function createTask(text, date, priority, checked = false) {
-        return {'text': text, 'date': date, 'priority': priority, 'checked': checked}
+        const formated_date = date == ''? 'no date': format(new Date(date.split('-')), 'dd MMM yyyy')
+        return {'text': text, 'date': formated_date, 'priority': priority, 'checked': checked}
     }
 
 

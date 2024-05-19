@@ -3,6 +3,7 @@ import './checkbox.css'
 import Storage from '../modules/data'
 import Task from '../modules/dom'
 
+
 function Todo(project) {
 
     const main =  document.querySelector('.content')
@@ -99,8 +100,7 @@ function Todo(project) {
         event.preventDefault()
         const formData = new FormData(form)
 
-        const date_info = formData.get('date') == ''? 'no date': formData.get('date')
-        Storage.addTask(new Task.createTask(formData.get('title'), date_info, formData.get('priority')), formData.get('project'))
+        Storage.addTask(new Task.createTask(formData.get('title'), formData.get('date'), formData.get('priority')), formData.get('project'))
 
         document.querySelector('#dialog-box').close()
         form.reset()
