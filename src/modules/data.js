@@ -25,7 +25,8 @@ const Storage = (function() {
     }
 
     const deleteTask = (task, project) => {
-        const check = task_storage[project].some((element) => element.text == task.text)
+        const check = task_storage[project].findIndex((element) => element.text == task.text)
+
         if (check) {
             task_storage[project].splice([check], 1)
         }
