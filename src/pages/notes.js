@@ -11,6 +11,7 @@ export const NotesStorage = (function () {
             title,
             description
         })
+
     }
 
     const renderNotes = function() {
@@ -111,7 +112,7 @@ export const NotesStorage = (function () {
             const formData = new FormData(form)
     
             addNote(formData.get('title'), formData.get('description'))
-    
+
             document.querySelector('.active').click()
             document.querySelector('#note-dialog-box').close()
             form.reset()
