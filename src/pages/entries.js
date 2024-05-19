@@ -75,7 +75,7 @@ function Todo(project) {
         main.querySelector('select#project').appendChild(option)
     })
 
-
+    main.querySelector('#date').valueAsDate = new Date()
 
     document.querySelector('.clear').addEventListener('click', () => {
         document.querySelectorAll('.task-list li input').forEach(event => {
