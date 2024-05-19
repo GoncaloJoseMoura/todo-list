@@ -102,9 +102,9 @@ function Todo(project) {
         const date_info = formData.get('date') == ''? 'no date': formData.get('date')
         Storage.addTask(new Task.createTask(formData.get('title'), date_info, formData.get('priority')), formData.get('project'))
 
-        document.querySelector('.active').click()
         document.querySelector('#dialog-box').close()
         form.reset()
+        document.querySelector('.active').click()
         }
     )
 
