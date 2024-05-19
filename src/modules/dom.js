@@ -106,9 +106,9 @@ const Task = (() => {
                         Todo(value)
                         li.classList.add('active')
                     } else {
-                        document.querySelector('.entries').click()
                         Storage.deleteProject(value)
                         event.target.closest('li').remove()
+                        document.querySelector('.entries').click()
                     }
                 })
 
