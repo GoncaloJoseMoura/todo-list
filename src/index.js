@@ -21,6 +21,8 @@ import Storage from './modules/data.js'
 
 // to do
 // add text that says you have completed all your tasks with a robo image
+// when you delete all task a few remain when changing to a project
+// create a localStorage
 
 
 document.querySelector('img').src = Profile
