@@ -178,7 +178,7 @@
                 list-style: none;
                 padding-left: 0px;
                 display: grid;
-                grid-template-columns: 1fr 13ch 10ch 6ch 2ch;
+                grid-template-columns: 1fr 13ch 11ch 6ch 2ch;
                 gap: 20px;
                 justify-items: start;
                 width: 100%;
